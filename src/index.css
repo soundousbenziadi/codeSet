@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @custom-variant dark (
   &:where(.dark, [data-theme="dark"], .dark *)
@@ -6,7 +7,8 @@
 html, body {
   overflow-x: hidden;
   width: 100%;
-   box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0%;
 }
 @theme {
   @keyframes loop-scroll {
@@ -22,12 +24,12 @@ html, body {
   --color-primaryc: #222831;          /* Deep gray-blue for structure (nav/buttons) */
   --color-secondaryc: #D0D7DE;        /* Muted gray for cards/borders */
   --color-accentc: #60F885;           /* Neon green accent (consistent identity) */
-  --color-section1: #EAFBF0;          /* Slight green tint background section */
-  --color-section2: #F3F6FB;          /* Soft neutral blue-white contrast section */
+  --color-section1: #aff4c7;          /* Slight green tint background section */
+  --color-section2: #E5E7EB;          /* Soft neutral blue-white contrast section */
   --color-section3: #FFFFFF;          /* Plain clean white section */
   
   --font-heading: "Playfair Display", serif;
-  --font-body: "Cairo", sans-serif;
+  --font-body: "Roboto", sans-serif;
 }
 
 /* ===== DARK THEME ===== */
@@ -39,7 +41,8 @@ html, body {
   --color-accentc: #60F885;           /* Consistent neon accent */
   --color-section1: #111414;          /* Base dark section */
   --color-section2: #141818;          /* Slight contrast section */
-  --color-section3: #191D1D;          /* Layered card contrast */
+  --color-section3: #191D1D; 
+  --color-test: #aff4c7;     /* Layered card contrast */
 }
 
 :root, html, body {

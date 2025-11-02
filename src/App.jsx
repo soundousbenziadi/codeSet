@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import Header from './components/Header'
+import { ToastContainer } from 'react-toastify';
 function App() {
 
   return (
@@ -10,9 +12,9 @@ function App() {
       <main className="flex-grow" >
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/About' element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ToastContainer position="top-right" autoClose={3000} />
       </main>
     </div>
   )

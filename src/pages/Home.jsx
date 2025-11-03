@@ -417,6 +417,79 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            {/* CTA Section */}
+            <section className="py-16 px-8 md:px-15">
+                <div className="max-w-4xl mx-auto text-center">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-4xl md:text-5xl font-bold mb-6"
+                        style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                        Ready to Compete?
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-xl mb-8 opacity-80"
+                    >
+                        Join us for an exciting day of programming challenges and showcase your skills!
+                    </motion.p>
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setShowModal(true)}
+                        className="px-12 py-5 rounded-lg font-semibold text-black text-xl"
+                        style={{ backgroundColor: 'var(--color-accentc)' }}
+                    >
+                        Register Now
+                    </motion.button>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.7 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="mt-6"
+                    >
+                        Contact: 0561309037 | Venue: Skill Center Setif, Algeria
+                    </motion.p>
+                </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="py-8 px-8 md:px-15 border-t"
+                style={{
+                    backgroundColor: 'var(--color-section1)',
+                    borderColor: 'var(--color-secondaryc)'
+                }}>
+                <div className="max-w-7xl mx-auto text-center">
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 0.7, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        © 2025 Setifeian Scientific Club • Ferhat Abbes Setif University 1
+                    </motion.p>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 0.7, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="mt-2"
+                    >
+                        Sponsored by Skill Center Setif
+                    </motion.p>
+                </div>
+            </footer>
         </div>
     )
 }

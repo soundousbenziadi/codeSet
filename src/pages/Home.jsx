@@ -24,6 +24,67 @@ import {
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        age: '',
+        category: 'algorithmic',
+        teamMode: 'individual',
+        experience: 'beginner'
+    });
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            // Replace this URL with your n8n webhook URL
+            const response = await fetch('https://n8n-fly-solitary-cherry-105.fly.dev/webhook/competition-registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fullName: formData.fullName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    age: formData.age,
+                    category: formData.category,
+                    experience: formData.experience,
+                    timestamp: new Date().toISOString()
+                })
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+                setTimeout(() => {
+                    setShowModal(false);
+                    setSubmitted(false);
+                    setFormData({
+                        fullName: '',
+                        email: '',
+                        phone: '',
+                        age: '',
+                        category: 'algorithmic',
+                        experience: 'beginner'
+                    });
+                }, 3000);
+            } else {
+                alert('Registration failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };
+
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -68,7 +129,7 @@ const Home = () => {
             {/* Hero Section */}
             <section className="relative pb-14 pt-16 px-8 md:pt-25 md:pb-15 md:px-15 space-y-6 overflow-hidden">
 
-                <div className="">
+                <div>
                     <div className="flex flex-col md:flex-row gap-12 items-center">
                         <div className="flex-1">
                             <motion.div
@@ -89,7 +150,7 @@ const Home = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-5xl md:text-6xl font-bold mb-8 leading-tight border-l-4 pl-6"
+                                className="text-5xl md:text-6xl font-medium mb-8 leading-tight border-l-4 pl-6"
                                 style={{ fontFamily: 'var(--font-heading)', borderColor: 'var(--color-accentc)' }}
                             >
                                 Setifian Programming
@@ -184,7 +245,12 @@ const Home = () => {
                 </div>
             </section>
             {/* Countdown Timer */}
-            <section className="py-16 px-4" style={{ backgroundColor: 'var(--color-section1)' }}>
+            <section className="py-16 px-4 relative" style={{ backgroundColor: 'var(--color-section1)' }}>
+                <div class="custom-shape-divider-top-1762207414 hidden md:block">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="shape-fill"></path>
+                    </svg>
+                </div>
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center">
                         <motion.h2
@@ -193,7 +259,6 @@ const Home = () => {
                             viewport={{ once: false, amount: 0.5 }}
                             transition={{ duration: 0.8 }}
                             className="text-3xl md:text-4xl font-bold mb-6"
-                            style={{ fontFamily: 'var(--font-heading)' }}
                         >
                             Registration Closes In
                         </motion.h2>
@@ -271,7 +336,6 @@ const Home = () => {
                             viewport={{ once: false, amount: 0.5 }}
                             transition={{ duration: 0.8 }}
                             className="text-4xl md:text-5xl font-bold mb-6"
-                            style={{ fontFamily: 'var(--font-heading)' }}
                         >
                             About the Competition
                         </motion.h2>
@@ -368,7 +432,7 @@ const Home = () => {
                             viewport={{ once: false, amount: 0.5 }}
                             transition={{ duration: 0.8 }}
                             className="text-4xl md:text-5xl font-bold mb-6"
-                            style={{ fontFamily: 'var(--font-heading)' }}
+
                         >
                             Event Schedule
                         </motion.h2>
@@ -418,7 +482,7 @@ const Home = () => {
                 </div>
             </section>
             {/* CTA Section */}
-            <section className="py-16 px-8 md:px-15">
+            <section className="py-16 px-8 md:px-15" id="cta">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
@@ -426,7 +490,7 @@ const Home = () => {
                         viewport={{ once: false, amount: 0.5 }}
                         transition={{ duration: 0.8 }}
                         className="text-4xl md:text-5xl font-bold mb-6"
-                        style={{ fontFamily: 'var(--font-heading)' }}
+
                     >
                         Ready to Compete?
                     </motion.h2>
@@ -452,15 +516,6 @@ const Home = () => {
                     >
                         Register Now
                     </motion.button>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 0.7 }}
-                        viewport={{ once: false, amount: 0.5 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="mt-6"
-                    >
-                        Contact: 0561309037 | Venue: Skill Center Setif, Algeria
-                    </motion.p>
                 </div>
             </section>
 
@@ -470,7 +525,7 @@ const Home = () => {
                     backgroundColor: 'var(--color-section1)',
                     borderColor: 'var(--color-secondaryc)'
                 }}>
-                <div className="max-w-7xl mx-auto text-center">
+                <div className="max-w-6xl mx-auto text-center">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 0.7, y: 0 }}
@@ -479,7 +534,7 @@ const Home = () => {
                     >
                         © 2025 Setifeian Scientific Club • Ferhat Abbes Setif University 1
                     </motion.p>
-                    <motion.p
+                    {/* <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 0.7, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
@@ -487,9 +542,248 @@ const Home = () => {
                         className="mt-2"
                     >
                         Sponsored by Skill Center Setif
-                    </motion.p>
+                    </motion.p> */}
                 </div>
             </footer>
+
+            {/* Registration Modal */}
+            {showModal && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm"
+                    onClick={() => !submitted && setShowModal(false)}
+                >
+                    <motion.div
+                        initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.8, opacity: 0, y: 50 }}
+                        transition={{ duration: 0.4 }}
+                        className="w-full max-w-2xl rounded-2xl p-8 max-h-[90vh] overflow-y-auto"
+                        style={{ backgroundColor: 'var(--color-backgroundc)' }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {!submitted ? (
+                            <>
+                                <div className="flex justify-between items-center mb-6">
+                                    <h3 className="text-3xl font-bold">
+                                        Register for Competition
+                                    </h3>
+                                    <button
+                                        onClick={() => setShowModal(false)}
+                                        className="p-2 rounded-lg hover:opacity-70 transition"
+                                        style={{ backgroundColor: 'var(--color-secondaryc)' }}
+                                    >
+                                        <X className="w-6 h-6" />
+                                    </button>
+                                </div>
+
+                                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.1 }}
+                                    >
+                                        <label className="flex items-center gap-2 mb-2 font-semibold">
+                                            <User className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />
+                                            <span>Full Name</span>
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="fullName"
+                                            value={formData.fullName}
+                                            onChange={handleInputChange}
+                                            required
+                                            className="w-full p-3 rounded-lg border-2 outline-none transition focus:border-opacity-100"
+                                            style={{
+                                                backgroundColor: 'var(--color-section2)',
+                                                borderColor: 'var(--color-secondaryc)'
+                                            }}
+                                            placeholder="Enter your full name"
+                                        />
+                                    </motion.div>
+
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.2 }}
+                                    >
+                                        <label className="flex items-center gap-2 mb-2 font-semibold">
+                                            <Mail className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />
+                                            <span>Email Address</span>
+                                        </label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            required
+                                            className="w-full p-3 rounded-lg border-2 outline-none transition focus:border-opacity-100"
+                                            style={{
+                                                backgroundColor: 'var(--color-section2)',
+                                                borderColor: 'var(--color-secondaryc)'
+                                            }}
+                                            placeholder="your.email@example.com"
+                                        />
+                                    </motion.div>
+
+                                    <div className="flex flex-col md:flex-row gap-4">
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.3 }}
+                                            className="flex-1"
+                                        >
+                                            <label className="flex items-center gap-2 mb-2 font-semibold">
+                                                <Phone className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />
+                                                <span>Phone Number</span>
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleInputChange}
+                                                required
+                                                className="w-full p-3 rounded-lg border-2 outline-none transition focus:border-opacity-100"
+                                                style={{
+                                                    backgroundColor: 'var(--color-section2)',
+                                                    borderColor: 'var(--color-secondaryc)'
+                                                }}
+                                                placeholder="0555555555"
+                                            />
+                                        </motion.div>
+
+                                        <motion.div
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.3 }}
+                                            className="flex-1"
+                                        >
+                                            <label className="flex items-center gap-2 mb-2 font-semibold">
+                                                <GraduationCap className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />
+                                                <span>Age</span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                name="age"
+                                                value={formData.age}
+                                                onChange={handleInputChange}
+                                                required
+                                                min="17"
+                                                max="26"
+                                                className="w-full p-3 rounded-lg border-2 outline-none transition focus:border-opacity-100"
+                                                style={{
+                                                    backgroundColor: 'var(--color-section2)',
+                                                    borderColor: 'var(--color-secondaryc)'
+                                                }}
+                                                placeholder="17-26"
+                                            />
+                                        </motion.div>
+                                    </div>
+
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.4 }}
+                                    >
+                                        <label className="flex items-center gap-2 mb-2 font-semibold">
+                                            <Code2 className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />
+                                            <span>Competition Category</span>
+                                        </label>
+                                        <select
+                                            name="category"
+                                            value={formData.category}
+                                            onChange={handleInputChange}
+                                            className="w-full p-3 rounded-lg border-2 outline-none transition focus:border-opacity-100"
+                                            style={{
+                                                backgroundColor: 'var(--color-section2)',
+                                                borderColor: 'var(--color-secondaryc)',
+                                                color: 'var(--color-textc)'
+                                            }}
+                                        >
+                                            <option value="algorithmic">Algorithmic Programming</option>
+                                            <option value="ctf">Capture The Flag (CTF)</option>
+                                            <option value="both">Both Categories</option>
+                                        </select>
+                                    </motion.div>
+
+
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.6 }}
+                                    >
+                                        <label className="flex items-center gap-2 mb-2 font-semibold">
+                                            <Cpu className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />
+                                            <span>Experience Level</span>
+                                        </label>
+                                        <select
+                                            name="experience"
+                                            value={formData.experience}
+                                            onChange={handleInputChange}
+                                            className="w-full p-3 rounded-lg border-2 outline-none transition focus:border-opacity-100"
+                                            style={{
+                                                backgroundColor: 'var(--color-section2)',
+                                                borderColor: 'var(--color-secondaryc)',
+                                                color: 'var(--color-textc)'
+                                            }}
+                                        >
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                        </select>
+                                    </motion.div>
+
+                                    <motion.button
+                                        type="submit"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.7 }}
+                                        whileHover={{ scale: 1.02 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full py-4 rounded-lg font-bold text-lg text-black"
+                                        style={{ backgroundColor: 'var(--color-accentc)' }}
+                                    >
+                                        Submit Registration
+                                    </motion.button>
+
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 0.7 }}
+                                        transition={{ delay: 0.8 }}
+                                        className="text-sm text-center"
+                                    >
+                                        By registering, you agree to follow competition rules and guidelines
+                                    </motion.p>
+                                </form>
+                            </>
+                        ) : (
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                className="text-center py-12"
+                            >
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ type: "spring", duration: 0.6 }}
+                                    className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center"
+                                    style={{ backgroundColor: 'var(--color-accentc)' }}
+                                >
+                                    <Check className="w-12 h-12 text-black" />
+                                </motion.div>
+                                <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                                    Registration Successful!
+                                </h3>
+                                <p className="text-lg opacity-80">
+                                    Thank you for registering. Check your email for confirmation details.
+                                </p>
+                            </motion.div>
+                        )}
+                    </motion.div>
+                </motion.div>
+            )}
         </div>
     )
 }

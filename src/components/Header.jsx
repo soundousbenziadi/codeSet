@@ -11,10 +11,9 @@ import { toast } from 'react-toastify'
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
 const navigation = [
-    { name: 'home', href: '/' },
-    { name: 'about sesc', href: '/About' },
-    { name: 'testimonials', href: '#' },
-    { name: 'contact', href: '/#Contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Who we are?', href: '/About' },
+    { name: 'Schedule', href: '/#schedule' },
 ];
 
 
@@ -61,8 +60,8 @@ export default function Header() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
-                    <a href="#" className="text-sm/6 font-semibold text-accentc"
-                        onClick={() => toast.info("soon..")}>
+                    <a href="/#cta" className="text-sm/6 font-semibold text-accentc"
+                    >
                         register now<span aria-hidden="true">&rarr;</span>
                     </a>
                     <ThemeToggle />
@@ -115,11 +114,10 @@ export default function Header() {
                             </div>
 
                             <a
-                                href="#"
+                                href="/#cta"
                                 className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-accentc hover:dark:bg-black hover:bg-white text-center"
-                                onClick={() => toast.info("قريبا...")}
                             >
-                                انضم الان
+                                register now<span aria-hidden="true">&rarr;</span>
                             </a>
                             <div className="flex justify-center mt-4">
                                 <ThemeToggle />

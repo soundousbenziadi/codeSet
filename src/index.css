@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @custom-variant dark (
   &:where(.dark, [data-theme="dark"], .dark *)
@@ -18,31 +18,28 @@ html, body {
 
   --animate-loop-scroll: loop-scroll 30s linear infinite;
 
-  /* ===== LIGHT THEME ===== */
-  --color-textc: #1A0011;             /* Deep neutral text for contrast */
-  --color-backgroundc: #F6F8FA;       /* Soft white-gray for comfort */
-  --color-primaryc: #222831;          /* Deep gray-blue for structure (nav/buttons) */
-  --color-secondaryc: #D0D7DE;        /* Muted gray for cards/borders */
-  --color-accentc: #60F885;           /* Neon green accent (consistent identity) */
-  --color-section1: #A8FBD3;          /* Slight green tint background section */
-  --color-section2: #E5E7EB;          /* Soft neutral blue-white contrast section */
-  --color-section3: #FFFFFF;          /* Plain clean white section */
   
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Roboto", sans-serif;
+  --color-textc: #1A0011;             
+  --color-backgroundc: #F6F8FA;      
+  --color-secondaryc: #D0D7DE;        
+  --color-accentc: #60F885;          
+  --color-section1: #7ADAA5;         
+  --color-section2: #E5E7EB;          
+  --color-section3: #FFFFFF;        
+  
+  --font-heading:"Audiowide", sans-serif;
+  --font-body: "Roboto Mono", monospace;
 }
 
 /* ===== DARK THEME ===== */
 .dark {
-  --color-textc: #DEDDDC;             /* Soft light gray for readability */
-  --color-backgroundc: #232626;       /* Deep near-black background */
-  --color-primaryc: #171B1C;          /* Slightly lighter for cards/nav */
-  --color-secondaryc: #2B2F30;        /* Mid-tone neutral for dividers/panels */
-  --color-accentc: #60F885;           /* Consistent neon accent */
-  --color-section1: #111414;          /* Base dark section */
-  --color-section2: #141818;          /* Slight contrast section */
+  --color-textc: #DEDDDC;             
+  --color-backgroundc: #232626;       
+  --color-secondaryc: #2B2F30;       
+  --color-accentc: #60F885;          
+  --color-section1: #111414;          
+  --color-section2: #141818;         
   --color-section3: #191D1D; 
-  --color-test: #aff4c7;     /* Layered card contrast */
 }
 
 :root, html, body {
@@ -53,7 +50,7 @@ html, body {
 
 
 
-h1, h2 {
+h1 {
   font-family: var(--font-heading);
 }
 p{
@@ -62,8 +59,25 @@ p{
 
 
 
+.custom-shape-divider-top-1762207414 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
 
+.custom-shape-divider-top-1762207414 svg {
+    position: relative;
+    display: block;
+    width: calc(174% + 1.3px);
+    height: 80px;
+}
 
+.custom-shape-divider-top-1762207414 .shape-fill {
+    fill: var(--color-backgroundc);
+}
 
 
 

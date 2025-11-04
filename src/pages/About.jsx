@@ -30,7 +30,7 @@ export default function AboutSESC() {
 
                     </motion.h2>
                     <motion.p
-                        className="text-lg md:text-xl leading-relaxed text-justify md:text-left opacity-90"
+                        className="text-lg md:text-xl leading-relaxed text-left md:text-left opacity-90"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, amount: 0.5 }}
@@ -98,7 +98,7 @@ export default function AboutSESC() {
                         </motion.div>
 
                         <motion.p
-                            className="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed text-justify"
+                            className="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed "
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
@@ -223,7 +223,7 @@ export default function AboutSESC() {
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             What We Do
                         </h2>
-                        <p className="text-xl opacity-80 max-w-3xl mx-auto text-justify">
+                        <p className="text-xl opacity-80 max-w-3xl mx-auto text-center">
                             Through diverse events and workshops, we provide enriching experiences beyond academics, focusing on creativity and teamwork
                         </p>
                     </motion.div>
@@ -288,7 +288,7 @@ export default function AboutSESC() {
                     <h2 className="text-3xl md:text-4xl font-semibold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                         Join Our Community
                     </h2>
-                    <p className="text-xl opacity-80 mb-8 text-justify">
+                    <p className="ext-xl opacity-80 mb-8 text-center">
                         Be part of a vibrant community of innovators, learners, and future leaders
                     </p>
                     <motion.a

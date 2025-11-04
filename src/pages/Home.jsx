@@ -191,7 +191,7 @@ const Home = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ duration: 0.8, delay: 0.8 }}
-                                className="flex items-center space-x-6 mt-8"
+                                className="flex items-center space-x-6 mt-8 px-4"
                             >
                                 <div className="flex items-center space-x-2">
                                     <Users className="w-5 h-5" style={{ color: 'var(--color-accentc)' }} />

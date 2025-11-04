@@ -127,7 +127,7 @@ const Home = () => {
             }}>
 
             {/* Hero Section */}
-            <section className="relative pb-14 pt-16 px-10 md:pt-25 md:pb-15 md:px-15 space-y-6 overflow-hidden">
+            <section className="relative pb-14 pt-18 px-10 md:pt-25 md:pb-15 md:px-15 space-y-6 overflow-hidden">
 
                 <div>
                     <div className="flex flex-col md:flex-row gap-12 items-center">

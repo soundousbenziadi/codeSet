@@ -127,7 +127,7 @@ const Home = () => {
             }}>
 
             {/* Hero Section */}
-            <section className="relative pb-14 pt-16 px-8 md:pt-25 md:pb-15 md:px-15 space-y-6 overflow-hidden">
+            <section className="relative pb-14 pt-16 px-10 md:pt-25 md:pb-15 md:px-15 space-y-6 overflow-hidden">
 
                 <div>
                     <div className="flex flex-col md:flex-row gap-12 items-center">
@@ -162,7 +162,7 @@ const Home = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ duration: 0.8, delay: 0.6 }}
-                                className="flex flex-wrap gap-4"
+                                className="flex flex-wrap gap-4 px-3"
                             >
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}

@@ -141,7 +141,7 @@ const Home = () => {
                                 style={{ backgroundColor: 'var(--color-section2)' }}
                             >
                                 <span style={{ color: 'var(--color-accentc)' }} className="font-medium">
-                                    November 8, 2025 • Setif, Algeria
+                                    November 8, 2025 • Setif
                                 </span>
                             </motion.div>
 

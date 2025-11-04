@@ -318,7 +318,7 @@ const Home = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setShowModal(true)}
-                            className="mt-8 px-10 py-4 rounded-lg font-semibold text-black text-lg"
+                            className="mt-8 px-10 py-4 rounded-lg text-black text-lg"
                             style={{ backgroundColor: 'var(--color-accentc)' }}
                         >
                             Register Before Time Runs Out
@@ -335,7 +335,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
                             transition={{ duration: 0.8 }}
-                            className="text-4xl md:text-5xl font-bold mb-6"
+                            className="text-3xl md:text-4xl font-bold mb-6"
                         >
                             About the Competition
                         </motion.h2>
@@ -431,7 +431,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
                             transition={{ duration: 0.8 }}
-                            className="text-4xl md:text-5xl font-bold mb-6"
+                            className="text-3xl md:text-4xl font-bold mb-6"
 
                         >
                             Event Schedule
@@ -489,7 +489,7 @@ const Home = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.5 }}
                         transition={{ duration: 0.8 }}
-                        className="text-4xl md:text-5xl font-bold mb-6"
+                        className="text-3xl md:text-4xl font-bold mb-6"
 
                     >
                         Ready to Compete?

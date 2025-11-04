@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logoLight from '../assets/SESC LOGO BLACK (2).png'
-import logoDark from '../assets/SESC LOGO WHITE.png'
+import logoLight from '../assets/sesclogoo.png'
+import logoDark from '../assets/sesclogodark.jpg'
 
 import ThemeToggle from './ThemeToggle'
 import { toast } from 'react-toastify'
@@ -32,12 +32,12 @@ export default function Header() {
                         <img
                             alt="logo"
                             src={logoLight}
-                            className="h-10 w-auto dark:hidden"
+                            className="h-10 w-auto dark:hidden rounded-full"
                         />
                         <img
                             alt="logo"
                             src={logoDark}
-                            className="h-10 w-auto hidden dark:block"
+                            className="h-10 w-auto hidden dark:block rounded-full"
                         />
                     </a>
 
@@ -80,12 +80,12 @@ export default function Header() {
                             <img
                                 alt=""
                                 src={logoLight}
-                                className="h-8 w-auto  dark:hidden"
+                                className="h-8 w-auto  dark:hidden rounded-full"
                             />
                             <img
                                 alt=""
                                 src={logoDark}
-                                className="h-8 w-auto  hidden dark:block"
+                                className="h-8 w-auto  hidden dark:block rounded-full"
                             />
                         </a>
                         <button

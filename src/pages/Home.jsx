@@ -140,7 +140,7 @@ const Home = () => {
                                 className="inline-block px-4 py-2 rounded-full mb-6 mx-6 md:mx-0"
                                 style={{ backgroundColor: 'var(--color-section2)' }}
                             >
-                                <span style={{ color: 'var(--color-accentc)' }} className="font-semibold">
+                                <span style={{ color: 'var(--color-accentc)' }} className="font-medium">
                                     November 8, 2025 • Setif, Algeria
                                 </span>
                             </motion.div>

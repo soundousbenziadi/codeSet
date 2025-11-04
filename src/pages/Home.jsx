@@ -162,7 +162,7 @@ const Home = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ duration: 0.8, delay: 0.6 }}
-                                className="flex flex-wrap gap-4 px-3"
+                                className="flex flex-wrap gap-4 px-6 md:px-3"
                             >
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}

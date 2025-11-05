@@ -48,28 +48,28 @@ html, body {
 
   --animate-loop-scroll: loop-scroll 30s linear infinite;
 
-  /* ===== LIGHT THEME ===== */
-  --color-textc: #0D1B2A;             /* Deep navy for readability */
-  --color-backgroundc: #F5F8FC;       /* Soft bluish white background */
-  --color-secondaryc: #D6E4F0;        /* Gentle blue-gray for cards or borders */
-  --color-accentc: #4EA8DE;           /* Bright blue accent for buttons or highlights */
-  --color-section1: #A9D6E5;          /* Light sky-blue section */
-  --color-section2: #E9F1F7;          /* Subtle pale blue-gray */
-  --color-section3: #FFFFFF;          /* Clean white for contrast */
+
+  --color-textc: #0D1B2A;            
+  --color-backgroundc: #F5F8FC;      
+  --color-secondaryc: #D6E4F0;       
+  --color-accentc: #4EA8DE;         
+  --color-section1: #A9D6E5;         
+  --color-section2: #E9F1F7;         
+  --color-section3: #FFFFFF;         
   
   --font-heading: "Audiowide", sans-serif;
   --font-body: "Roboto Mono", monospace;
 }
 
-/* ===== DARK THEME ===== */
+
 .dark {
-  --color-textc: #E2E8F0;             /* Soft light gray-blue text */
-  --color-backgroundc: #0B132B;       /* Deep dark navy background */
-  --color-secondaryc: #1C2541;        /* Slightly lighter navy for cards */
-  --color-accentc: #4EA8DE;           /* Same bright blue accent for consistency */
-  --color-section1: #1B263B;          /* Muted blue for section background */
-  --color-section2: #141E30;          /* Dark gradient-like blue */
-  --color-section3: #192734;          /* Slightly grayish navy */
+  --color-textc: #E2E8F0;            
+  --color-backgroundc: #0B132B;      
+  --color-secondaryc: #1C2541;        
+  --color-accentc: #4EA8DE;          
+  --color-section1: #1B263B;         
+  --color-section2: #141E30;        
+  --color-section3: #192734;        
 }
 
 

@@ -95,7 +95,7 @@ const Home = () => {
 
     // Countdown timer
     useEffect(() => {
-        const targetDate = new Date('2025-11-08T09:00:00').getTime();
+        const targetDate = new Date('2025-11-07T18:00:00').getTime();
 
         const updateTimer = () => {
             const now = new Date().getTime();
@@ -215,10 +215,10 @@ const Home = () => {
                                 style={{ backgroundColor: 'var(--color-section2)' }}>
                                 <div className="flex flex-wrap gap-4">
                                     {[
-                                        { icon: Code2, label: 'Algorithmic', color: '#60F885' },
-                                        { icon: Shield, label: 'CTF', color: '#60F885' },
-                                        { icon: Trophy, label: 'Prizes', color: '#60F885' },
-                                        { icon: Zap, label: 'Live Board', color: '#60F885' }
+                                        { icon: Code2, label: 'Algorithmic', color: 'var(--color-accentc)' },
+                                        { icon: Shield, label: 'CTF', color: 'var(--color-accentc)' },
+                                        { icon: Trophy, label: 'Prizes', color: 'var(--color-accentc)' },
+                                        { icon: Zap, label: 'Live Board', color: 'var(--color-accentc)' }
                                     ].map((item, idx) => (
                                         <motion.div
                                             key={idx}

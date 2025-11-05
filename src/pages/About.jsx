@@ -162,10 +162,10 @@ export default function AboutSESC() {
                         {/* Stats Grid */}
                         <div className="flex flex-wrap gap-6 flex-1">
                             {[
-                                { icon: Users, label: 'Active Members', value: '100+', color: '#60F885' },
-                                { icon: Award, label: 'Events Organized', value: '150+', color: '#60F885' },
-                                { icon: Clock, label: 'Years of Excellence', value: '11+', color: '#60F885' },
-                                { icon: Heart, label: 'Projects', value: '15+', color: '#60F885' }
+                                { icon: Users, label: 'Active Members', value: '100+', color: 'var(--color-accentc)' },
+                                { icon: Award, label: 'Events Organized', value: '150+', color: 'var(--color-accentc)' },
+                                { icon: Clock, label: 'Years of Excellence', value: '11+', color: 'var(--color-accentc)' },
+                                { icon: Heart, label: 'Projects', value: '15+', color: 'var(--color-accentc)' }
                             ].map((stat, idx) => (
                                 <motion.div
                                     key={idx}

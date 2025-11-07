@@ -10,7 +10,7 @@ html, body {
   box-sizing: border-box;
   padding: 0%;
 }
-/* @theme {
+@theme {
   @keyframes loop-scroll {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -39,8 +39,8 @@ html, body {
   --color-section1: #111414;          
   --color-section2: #141818;         
   --color-section3: #191D1D; 
-} */
- @theme {
+}
+ /* @theme {
   @keyframes loop-scroll {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -70,7 +70,7 @@ html, body {
   --color-section1: #1B263B;         
   --color-section2: #141E30;        
   --color-section3: #192734;        
-}
+} */
 
 
 :root, html, body {

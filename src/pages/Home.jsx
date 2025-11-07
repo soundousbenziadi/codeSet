@@ -564,7 +564,41 @@ const Home = () => {
                         style={{ backgroundColor: 'var(--color-backgroundc)' }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {!submitted ? (
+                        {timeLeft.expired ? (
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                className="text-center py-12"
+                            >
+                                <div className="flex justify-end mb-4">
+                                    <button
+                                        onClick={() => setShowModal(false)}
+                                        className="p-2 rounded-lg hover:opacity-70 transition"
+                                        style={{ backgroundColor: 'var(--color-secondaryc)' }}
+                                    >
+                                        <X className="w-6 h-6" />
+                                    </button>
+                                </div>
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ type: "spring", duration: 0.6 }}
+                                    className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center"
+                                    style={{ backgroundColor: 'var(--color-section2)' }}
+                                >
+                                    <Clock className="w-12 h-12" style={{ color: 'var(--color-accentc)' }} />
+                                </motion.div>
+                                <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                                    Registration Closed
+                                </h3>
+                                <p className="text-lg opacity-80 mb-6">
+                                    Unfortunately, registration for this competition has ended.
+                                </p>
+                                <p className="text-md opacity-70">
+                                    Stay tuned for future events and competitions!
+                                </p>
+                            </motion.div>
+                        ) : !submitted ? (
                             <>
                                 <div className="flex justify-between items-center mb-6">
                                     <h3 className="text-3xl font-bold">

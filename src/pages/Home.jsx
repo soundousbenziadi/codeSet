@@ -23,6 +23,62 @@ import {
 } from 'lucide-react';
 
 const Home = () => {
+    // Competition live timer state
+    const [competitionTime, setCompetitionTime] = useState({
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        status: 'upcoming', // upcoming, active, ended
+        progress: 0
+    });
+    // Competition live timer
+    useEffect(() => {
+        const updateCompetitionTimer = () => {
+            const now = new Date();
+            const today = new Date('2025-11-08');
+            const startTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 10, 0, 0);
+            const endTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 17, 0, 0);
+
+            const totalDuration = endTime - startTime;
+            const currentTime = now.getTime();
+
+            if (currentTime < startTime) {
+                setCompetitionTime({
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0,
+                    status: 'upcoming',
+                    progress: 0
+                });
+            } else if (currentTime >= startTime && currentTime <= endTime) {
+                const timeRemaining = endTime - currentTime;
+                const elapsed = currentTime - startTime;
+                const progress = (elapsed / totalDuration) * 100;
+
+                setCompetitionTime({
+                    hours: Math.floor(timeRemaining / (1000 * 60 * 60)),
+                    minutes: Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((timeRemaining % (1000 * 60)) / 1000),
+                    status: 'active',
+                    progress: progress
+                });
+            } else {
+                setCompetitionTime({
+                    hours: 0,
+                    minutes: 0,
+                    seconds: 0,
+                    status: 'ended',
+                    progress: 100
+                });
+            }
+        };
+
+        updateCompetitionTimer();
+        const interval = setInterval(updateCompetitionTimer, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // *****************************************************************
     const [showModal, setShowModal] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [formData, setFormData] = useState({
@@ -817,6 +873,141 @@ const Home = () => {
                         )}
                     </motion.div>
                 </motion.div>
+            )}
+            {/* Live Competition Timer */}
+            {competitionTime.status === 'active' && (
+                <section className="py-20 px-4 relative" style={{ backgroundColor: 'var(--color-section1)' }}>
+                    <div className="max-w-7xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8 }}
+                            className="text-center"
+                        >
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.05, 1],
+                                    opacity: [0.7, 1, 0.7]
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                                className="inline-block px-6 py-3 rounded-full mb-8"
+                                style={{ backgroundColor: 'var(--color-section3)' }}
+                            >
+                                <span className="text-lg font-bold flex items-center gap-2" style={{ color: 'var(--color-accentc)' }}>
+                                    <Zap className="w-6 h-6" />
+                                    COMPETITION IN PROGRESS
+                                </span>
+                            </motion.div>
+
+                            <h2 className="text-5xl md:text-6xl font-bold mb-4">
+                                Time Remaining
+                            </h2>
+                            <p className="text-xl mb-12 opacity-80">
+                                Competition ends at 5:00 PM
+                            </p>
+
+                            {/* Main Timer Display */}
+                            <div className="flex flex-wrap justify-center gap-6 mb-12">
+                                {[
+                                    { label: 'Hours', value: competitionTime.hours },
+                                    { label: 'Minutes', value: competitionTime.minutes },
+                                    { label: 'Seconds', value: competitionTime.seconds }
+                                ].map((unit, idx) => (
+                                    <motion.div
+                                        key={unit.label}
+                                        initial={{ opacity: 0, y: 50 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6, delay: idx * 0.1 }}
+                                        className="relative"
+                                    >
+                                        <motion.div
+                                            animate={unit.label === 'Seconds' ? {
+                                                boxShadow: [
+                                                    `0 0 20px ${unit.value % 2 === 0 ? 'rgba(139, 92, 246, 0.3)' : 'rgba(139, 92, 246, 0)'}`,
+                                                    `0 0 40px ${unit.value % 2 === 0 ? 'rgba(139, 92, 246, 0.5)' : 'rgba(139, 92, 246, 0)'}`,
+                                                    `0 0 20px ${unit.value % 2 === 0 ? 'rgba(139, 92, 246, 0.3)' : 'rgba(139, 92, 246, 0)'}`
+                                                ]
+                                            } : {}}
+                                            transition={{ duration: 1, repeat: Infinity }}
+                                            className="p-8 md:p-12 rounded-2xl min-w-[140px] md:min-w-[180px]"
+                                            style={{
+                                                backgroundColor: 'var(--color-section3)',
+                                                border: '2px solid var(--color-accentc)'
+                                            }}
+                                        >
+                                            <motion.div
+                                                key={unit.value}
+                                                initial={{ scale: 1.2, opacity: 0 }}
+                                                animate={{ scale: 1, opacity: 1 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="text-6xl md:text-7xl font-bold mb-3"
+                                                style={{
+                                                    color: 'var(--color-accentc)',
+                                                    textShadow: '0 0 30px rgba(139, 92, 246, 0.5)'
+                                                }}
+                                            >
+                                                {String(unit.value).padStart(2, '0')}
+                                            </motion.div>
+                                            <div className="text-lg uppercase tracking-wider opacity-70">
+                                                {unit.label}
+                                            </div>
+                                        </motion.div>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Progress Bar */}
+                            <div className="max-w-4xl mx-auto mb-8">
+                                <div className="flex justify-between items-center mb-3">
+                                    <span className="text-sm opacity-70">10:00 AM</span>
+                                    <span className="text-sm font-bold" style={{ color: 'var(--color-accentc)' }}>
+                                        {Math.round(competitionTime.progress)}% Complete
+                                    </span>
+                                    <span className="text-sm opacity-70">5:00 PM</span>
+                                </div>
+                                <div className="h-4 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--color-section3)' }}>
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${competitionTime.progress}%` }}
+                                        transition={{ duration: 1 }}
+                                        className="h-full rounded-full relative"
+                                        style={{ backgroundColor: 'var(--color-accentc)' }}
+                                    >
+                                        <motion.div
+                                            animate={{
+                                                x: [0, 100, 0],
+                                                opacity: [0, 1, 0]
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                            className="absolute inset-0 bg-white opacity-30"
+                                        />
+                                    </motion.div>
+                                </div>
+                            </div>
+
+                            {/* Motivational Messages */}
+                            <motion.div
+                                animate={{ opacity: [0.6, 1, 0.6] }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                                className="text-2xl font-bold"
+                                style={{ color: 'var(--color-accentc)' }}
+                            >
+                                {competitionTime.hours >= 5 ? "Keep pushing forward" :
+                                    competitionTime.hours >= 3 ? "You're doing great" :
+                                        competitionTime.hours >= 1 ? "Final stretch! Give it your all 🔥" :
+                                            "Last hour! Make every second count⚡"}
+                            </motion.div>
+                        </motion.div>
+                    </div>
+                </section>
             )}
         </div>
     )
